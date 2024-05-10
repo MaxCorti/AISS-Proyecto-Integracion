@@ -8,9 +8,6 @@ import jakarta.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * @author Juan C. Alonso
- */
 @Entity
 @Table(name = "Channel")
 public class Channel {
@@ -38,6 +35,11 @@ public class Channel {
     private List<Video> videos;
 
     public Channel() {
+    }
+    public Channel(String name, String description, String createdTime){
+        this.name = name;
+        this.description = description;
+        this.createdTime = createdTime;
         this.videos = new ArrayList<>();
     }
 
@@ -80,6 +82,8 @@ public class Channel {
     public void setVideos(List<Video> videos) {
         this.videos = videos;
     }
+
+
 
     @Override
     public String toString() {

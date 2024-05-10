@@ -42,6 +42,10 @@ public class Video {
     @NotNull(message = "Video captions cannot be null")
     private List<Caption> captions;
 
+    public Video(List<Caption> captions) {
+        this.captions = captions;
+    }
+
     public String getId() {
         return id;
     }
