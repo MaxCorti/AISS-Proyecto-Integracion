@@ -37,12 +37,12 @@ public class CommentController {
         return canal.get();
     }
 
-    public void create(String videoId, Comment commentRequest){
+    /*public void create(String videoId, Comment commentRequest){
         Optional<Video> video = videoRepository.findById(videoId);
         video.get().getComments().add(commentRequest);
         Comment comment = repository.save(new Comment(commentRequest.getText(), commentRequest.getCreatedOn()));
         userController.create(comment.getId(), commentRequest.getAuthor());
-    }
+    }*/
 }
 
 

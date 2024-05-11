@@ -38,19 +38,19 @@ public class VideoController {
         return video.get();
     }
 
-    public void create(String channelId, Video videoRequest){
+    /*public void create(String channelId, Video videoRequest){
         Optional<Channel> canal = channelRepository.findById(channelId);
         canal.get().getVideos().add(videoRequest);
         Video video = repository.save(new Video(videoRequest.getName(), videoRequest.getDescription(), videoRequest.getReleaseTime()));
         parseCaption(video);
         parseComment(video);
-    }
+    }*/
 
-    private void parseComment(Video video){
+    /*private void parseComment(Video video){
         for (Comment c : video.getComments()){
             commentController.create(video.getId(), c);
         }
-    }
+    }*/
 
     private void parseCaption(Video video){
         for (Caption c : video.getCaptions()){

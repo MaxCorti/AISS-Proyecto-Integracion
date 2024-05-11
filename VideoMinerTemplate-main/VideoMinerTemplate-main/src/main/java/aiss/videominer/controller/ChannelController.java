@@ -46,7 +46,7 @@ public class ChannelController {
     @PostMapping
     public Channel create(@Valid @RequestBody Channel channel) {
         List<Video> videos = parseVideos(channel);
-        Channel canal = new Channel(channel.getName(), channel.getDescription(), channel.getCreatedTime());
+        Channel canal = new Channel(channel.getId(), channel.getName(), channel.getDescription(), channel.getCreatedTime());
         canal.setVideos(videos);
         return repository.save(canal);
     }
@@ -56,7 +56,7 @@ public class ChannelController {
         for (Video v : channel.getVideos()){
             List<Comment> comments = parseComment(v);
             parseCaption(v);
-            Video video = new Video(v.getName(), v.getDescription(), v.getReleaseTime());
+            Video video = new Video(v.getId(), v.getName(), v.getDescription(), v.getReleaseTime());
             video.setCaptions(v.getCaptions());
             video.setComments(comments);
             videoRepository.save(video);
@@ -71,7 +71,7 @@ public class ChannelController {
             User user = c.getAuthor();
             userRepository.save(user);
 
-            Comment comment = new Comment(c.getText(), c.getCreatedOn());
+            Comment comment = new Comment(c.getId(), c.getText(), c.getCreatedOn());
             comment.setAuthor(user);
             commentRepository.save(comment);
             res.add(comment);
